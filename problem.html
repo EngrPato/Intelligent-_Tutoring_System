@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card shadow-sm mb-3">
+        <div class="card-body">
+          <h3 class="card-title">{{ problem.name }}</h3>
+          <p><strong>Shape:</strong> {{ shape_name or "unknown" }}</p>
+          <p><strong>Dimensions:</strong></p>
+          <ul>
+            {% for n, v in dims %}
+              <li>{{ n or 'dim' }} = {{ v }}</li>
+            {% endfor %}
+          </ul>
+
+          <p><strong>Stored answer:</strong> {{ stored if stored else "(none)" }}</p>
+          <p><strong>Computed answer:</strong> {{ computed|round(4) if computed else "(cannot compute)" }}</p>
+        </div>
+      </div>
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4>Submit your answer</h4>
+          <form method="post" action="{{ url_for('problem_submit', name=problem.name) }}">
+            <div class="mb-3">
+              <label class="form-label">Student name</label>
+              <input class="form-control" name="student" placeholder="e.g., Student_Joy" required>
+              <div class="form-text">Your name will be used to save attempts in the ontology.</div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Area (numeric)</label>
+              <input class="form-control" name="answer" placeholder="Enter numeric value (e.g., 28.27)" required>
+            </div>
+            <button class="btn btn-success" type="submit">Submit Answer</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Hints</h5>
+          <p class="card-text">
+            Use the correct formula for the shape:
+            <ul>
+              <li>Circle: Area = π × r²</li>
+              <li>Square: Area = side × side</li>
+              <li>Rectangle: Area = length × width</li>
+              <li>Triangle: Area = 0.5 × base × height</li>
+            </ul>
+          </p>
+          <hr>
+          <h6>Ontology snapshot</h6>
+          <p class="small text-muted">If you want to edit domain knowledge (formulas, shapes, base problems), open your `.owl` file in Protégé and update the individuals. Then reload this app.</p>
+        </div>
+      </div>
+
+      <div class="card mt-3 shadow-sm">
+        <div class="card-body">
+          <h6>Quick actions</h6>
+          <a href="{{ url_for('add_problem') }}" class="btn btn-outline-secondary btn-sm">Create problem</a>
+          <a href="{{ url_for('students_view') }}" class="btn btn-outline-secondary btn-sm">View students</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

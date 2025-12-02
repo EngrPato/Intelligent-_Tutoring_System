@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h3>Create a new problem</h3>
+      <form method="post" action="{{ url_for('add_problem') }}">
+        <div class="mb-3">
+          <label class="form-label">Problem name (unique)</label>
+          <input class="form-control" name="problem_name" placeholder="e.g., Problem_Circle_R5" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Shape</label>
+          <select name="shape" class="form-select">
+            <option>Circle</option>
+            <option>Square</option>
+            <option>Rectangle</option>
+            <option>Triangle</option>
+          </select>
+        </div>
+
+        <hr>
+        <h5>Dimension 1</h5>
+        <div class="row mb-3">
+          <div class="col">
+            <input class="form-control" name="dim1_name" placeholder="e.g., radius" value="radius" required>
+          </div>
+          <div class="col">
+            <input class="form-control" name="dim1_value" placeholder="e.g., 3" required>
+          </div>
+        </div>
+
+        <h5>Dimension 2 (optional)</h5>
+        <div class="row">
+          <div class="col">
+            <input class="form-control" name="dim2_name" placeholder="e.g., height" value="">
+          </div>
+          <div class="col">
+            <input class="form-control" name="dim2_value" placeholder="e.g., 4">
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <button class="btn btn-primary">Create Problem</button>
+          <a class="btn btn-secondary" href="{{ url_for('index') }}">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

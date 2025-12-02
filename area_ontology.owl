@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/jerry/ontologies/2025/10/area-ontology/"
+         xmlns="http://www.semanticweb.org/jerry/ontologies/2025/10/area-ontology/">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/jerry/ontologies/2025/10/area-ontology">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This is an ontology about areas of 2D shapes</rdfs:comment>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="attemptOf">
+  <rdfs:domain rdf:resource="Attempt"/>
+  <rdfs:range rdf:resource="Problem"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="attempts">
+  <rdfs:domain rdf:resource="Student"/>
+  <rdfs:range rdf:resource="Attempt"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="hasDimension">
+  <rdfs:domain rdf:resource="Shape"/>
+  <rdfs:range rdf:resource="Dimension"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="hasFeedback">
+  <rdfs:domain rdf:resource="Attempt"/>
+  <rdfs:range rdf:resource="Feedback"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="hasFormula">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="Shape"/>
+  <rdfs:range rdf:resource="Formula"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="hasProblem">
+  <rdfs:domain rdf:resource="Student"/>
+  <rdfs:range rdf:resource="Problem"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="hasProblemDimension">
+  <rdfs:domain rdf:resource="Problem"/>
+  <rdfs:range rdf:resource="Dimension"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="hasShape">
+  <rdfs:domain rdf:resource="Problem"/>
+  <rdfs:range rdf:resource="Shape"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="correctAnswer">
+  <rdfs:domain rdf:resource="Problem"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="dimensionName">
+  <rdfs:domain rdf:resource="Dimension"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="dimensionValue">
+  <rdfs:domain rdf:resource="Dimension"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="expression">
+  <rdfs:domain rdf:resource="Formula"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="hasAnswer">
+  <rdfs:domain rdf:resource="Attempt"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="isCorrect">
+  <rdfs:domain rdf:resource="Attempt"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="masteryLevel">
+  <rdfs:domain rdf:resource="Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="studentScore">
+  <rdfs:domain rdf:resource="Student"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="Attempt"/>
+
+<owl:Class rdf:about="Problem"/>
+
+<owl:Class rdf:about="Student"/>
+
+<owl:Class rdf:about="Shape"/>
+
+<owl:Class rdf:about="Dimension"/>
+
+<owl:Class rdf:about="Feedback"/>
+
+<owl:Class rdf:about="Formula"/>
+
+<owl:Class rdf:about="Circle">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="hasDimension"/>
+      <owl:onClass rdf:resource="Dimension"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="Shape"/>
+</owl:Class>
+
+<owl:Class rdf:about="Rectangle">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="hasDimension"/>
+      <owl:onClass rdf:resource="Dimension"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="Shape"/>
+</owl:Class>
+
+<owl:Class rdf:about="Square">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="hasDimension"/>
+      <owl:onClass rdf:resource="Dimension"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="Shape"/>
+</owl:Class>
+
+<owl:Class rdf:about="Triangle">
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="hasDimension"/>
+      <owl:onClass rdf:resource="Dimension"/>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="Shape"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="CircleFormula">
+  <rdf:type rdf:resource="Formula"/>
+  <expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Area = pi  *  radius^2"</expression>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Circle_Instance">
+  <rdf:type rdf:resource="Shape"/>
+  <hasFormula rdf:resource="CircleFormula"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Problem_Circle_R3">
+  <rdf:type rdf:resource="Problem"/>
+  <hasProblemDimension rdf:resource="radius_dim_r3"/>
+  <hasShape rdf:resource="Circle_Instance"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="radius_dim_r3">
+  <rdf:type rdf:resource="Dimension"/>
+  <dimensionName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">radius</dimensionName>
+  <dimensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</dimensionValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Problem_Rect_L4W2">
+  <rdf:type rdf:resource="Problem"/>
+  <hasProblemDimension rdf:resource="length_dim4"/>
+  <hasProblemDimension rdf:resource="width_dim2"/>
+  <hasShape rdf:resource="Rectangle_Instance"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="length_dim4">
+  <rdf:type rdf:resource="Dimension"/>
+  <dimensionName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">length</dimensionName>
+  <dimensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</dimensionValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="width_dim2">
+  <rdf:type rdf:resource="Dimension"/>
+  <dimensionName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">width</dimensionName>
+  <dimensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">2.0</dimensionValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Rectangle_Instance">
+  <rdf:type rdf:resource="Shape"/>
+  <hasFormula rdf:resource="RectangleFormula"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="RectangleFormula">
+  <rdf:type rdf:resource="Formula"/>
+  <expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Area = length * width"</expression>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Problem_Square_S4">
+  <rdf:type rdf:resource="Problem"/>
+  <hasProblemDimension rdf:resource="side_dim_s4"/>
+  <hasShape rdf:resource="Square_Instance"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="side_dim_s4">
+  <rdf:type rdf:resource="Dimension"/>
+  <dimensionName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">side</dimensionName>
+  <dimensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">4.0</dimensionValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Square_Instance">
+  <rdf:type rdf:resource="Shape"/>
+  <hasFormula rdf:resource="SquareFormula"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="SquareFormula">
+  <rdf:type rdf:resource="Formula"/>
+  <expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Area = side * side"</expression>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Problem_Tri_B3H6">
+  <rdf:type rdf:resource="Problem"/>
+  <hasProblemDimension rdf:resource="base_dim_3"/>
+  <hasProblemDimension rdf:resource="height_dim_6"/>
+  <hasShape rdf:resource="Triangle_Instance"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="base_dim_3">
+  <rdf:type rdf:resource="Dimension"/>
+  <dimensionName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">base</dimensionName>
+  <dimensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">3.0</dimensionValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="height_dim_6">
+  <rdf:type rdf:resource="Dimension"/>
+  <dimensionName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">height</dimensionName>
+  <dimensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">6.0</dimensionValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Triangle_Instance">
+  <rdf:type rdf:resource="Shape"/>
+  <hasFormula rdf:resource="TriangleFormula"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="TriangleFormula">
+  <rdf:type rdf:resource="Formula"/>
+  <expression rdf:datatype="http://www.w3.org/2001/XMLSchema#string">"Area = 0.5 * height * base"</expression>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Student_Joy">
+  <rdf:type rdf:resource="Student"/>
+  <hasProblem rdf:resource="Problem_Circle_R3"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Problem_Circle_R6">
+  <rdf:type rdf:resource="Problem"/>
+  <hasShape rdf:resource="Circle_inst_Problem_Circle_R6"/>
+  <hasProblemDimension rdf:resource="Problem_Circle_R6_dim1"/>
+  <correctAnswer rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">113.09733552923255</correctAnswer>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Circle_inst_Problem_Circle_R6">
+  <rdf:type rdf:resource="Circle"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Problem_Circle_R6_dim1">
+  <rdf:type rdf:resource="Dimension"/>
+  <dimensionName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">radius</dimensionName>
+  <dimensionValue rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">6.0</dimensionValue>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Student_Ifu">
+  <rdf:type rdf:resource="Student"/>
+  <attempts rdf:resource="Attempt_Student_Ifu_Problem_Tri_B3H6_20251119T220441"/>
+  <studentScore rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</studentScore>
+  <masteryLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</masteryLevel>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="Attempt_Student_Ifu_Problem_Tri_B3H6_20251119T220441">
+  <rdf:type rdf:resource="Attempt"/>
+  <attemptOf rdf:resource="Problem_Tri_B3H6"/>
+  <hasAnswer rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">34.1</hasAnswer>
+  <isCorrect rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</isCorrect>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <h3>Attempts</h3>
+  {% if attempts %}
+    <table class="table table-striped">
+      <thead><tr><th>Attempt</th><th>Student</th><th>Problem</th><th>Answer</th><th>Correct</th></tr></thead>
+      <tbody>
+        {% for a in attempts %}
+          <tr>
+            <td>{{ a.name }}</td>
+            <td>
+              {% if a.is_a %}
+                <!-- not all attempts are linked to student; leave blank if not -->
+              {% endif %}
+              <!-- find student by naming convention in IRI (naive) -->
+              {% set parts = a.name.split('_') %}
+              <td>{{ a.attemptOf[0].name if a.attemptOf else '(none)' }}</td>
+              <td>{{ a.hasAnswer[0] if a.hasAnswer else 'n/a' }}</td>
+              <td>{{ 'Yes' if a.isCorrect and a.isCorrect[0] else 'No' }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="alert alert-info">No attempts recorded yet.</div>
+  {% endif %}
+{% endblock %}

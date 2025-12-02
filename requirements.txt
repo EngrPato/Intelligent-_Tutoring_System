@@ -1,0 +1,2 @@
+Flask>=2.0
+owlready2>=0.38
